@@ -5,6 +5,6 @@ namespace AdyenAPIPayments.Models.AdyenPaymentsDetails
     public class Details
     {
         [JsonPropertyName("redirectResult")]
-        public string RedirectResult { get; set; }
+        public string? RedirectResult { get; set; }
     }
 }

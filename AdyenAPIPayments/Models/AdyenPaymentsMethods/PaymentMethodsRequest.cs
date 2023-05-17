@@ -6,18 +6,18 @@ namespace AdyenAPIPayments.Models.AdyenPaymentsMethods
     {
 
         [JsonPropertyName("merchantAccount")]
-        public string MerchantAccount { get; set; }
+        public string? MerchantAccount { get; set; }
 
         [JsonPropertyName("countryCode")]
-        public string CountryCode { get; set; }
+        public string? CountryCode { get; set; }
 
         [JsonPropertyName("amount")]
-        public Amount Amount { get; set; }
+        public Amount? Amount { get; set; }
 
         [JsonPropertyName("channel")]
-        public string Channel { get; set; }
+        public string? Channel { get; set; }
 
         [JsonPropertyName("shopperLocale")]
-        public string ShopperLocale { get; set; }
+        public string? ShopperLocale { get; set; }
     }
 }

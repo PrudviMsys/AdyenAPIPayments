@@ -19,7 +19,7 @@ public class PaymentsController : ControllerBase
     [HttpPost("details")]
     public async Task<ActionResult<PaymentDetailsResponse>> ProcessPaymentDetails(PaymentDetailsRequest request)
     {
-        var apiKey = "YOUR_x-API-key";
+        var apiKey = "YOUR-X-API-KEY";
         var apiUrl = "https://checkout-test.adyen.com/v69/payments/details";
 
         using var client = _httpClientFactory.CreateClient();

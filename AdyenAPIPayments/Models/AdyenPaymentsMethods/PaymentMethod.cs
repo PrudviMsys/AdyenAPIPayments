@@ -5,15 +5,15 @@ namespace AdyenAPIPayments.Models.AdyenPaymentsMethods
     public class AdyenPaymentMethod
     {
         [JsonPropertyName("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [JsonPropertyName("type")]
-        public string Type { get; set; }
+        public string? Type { get; set; }
 
         [JsonPropertyName("issuers")]
-        public List<Issuer> Issuers { get; set; }
+        public List<Issuer>? Issuers { get; set; }
 
         [JsonPropertyName("brands")]
-        public List<string> Brands { get; set; }
+        public List<string>? Brands { get; set; }
     }
 }

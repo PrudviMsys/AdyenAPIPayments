@@ -2,6 +2,6 @@
 {
     public class PaymentDetailsRequest
     {
-        public Details Details { get; set; }
+        public Details? Details { get; set; }
     }
 }

@@ -1,5 +1,4 @@
-﻿using AdyenAPIPayments.Models.AdyenPaymentsMethods;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 using System.Text;
@@ -21,26 +20,26 @@ namespace AdyenAPIPayments.Controllers
 
         [HttpPost]
         public async Task<ActionResult<PaymentResponse>> MakePaymentRequest(PaymentRequest paymentRequest)
-        {            
-            _httpClient.DefaultRequestHeaders.Add("x-API-key", "YOUR_x-API-key");
+        {
+            // Replace "YOUR_API_KEY" with your actual Adyen API key
+            _httpClient.DefaultRequestHeaders.Add("x-API-key", "YOUR-X-API-KEY");
             _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            var requestContent = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(paymentRequest), Encoding.UTF8, "application/json");
+            var url = "https://checkout-test.adyen.com/v70/payments";
 
-            var response = await _httpClient.PostAsync("https://checkout-test.adyen.com/v69/payments", requestContent);
-            var responseContent = await response.Content.ReadAsStringAsync();
+            var json = System.Text.Json.JsonSerializer.Serialize(paymentRequest);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            var paymentResponse = Newtonsoft.Json.JsonConvert.DeserializeObject<PaymentResponse>(responseContent);
+            var response = await _httpClient.PostAsync(url, content);
 
-            //return Ok(paymentResponse);
-            if (paymentResponse.IsSuccessStatusCode)
+            if (response.IsSuccessStatusCode)
             {
+                var responseJson = await response.Content.ReadAsStringAsync();
+                var paymentResponse = System.Text.Json.JsonSerializer.Deserialize<PaymentResponse>(responseJson);
                 return Ok(paymentResponse);
             }
-            else
-            {
-                return BadRequest();
-            }
+
+            return BadRequest();
         }
     }
 }
