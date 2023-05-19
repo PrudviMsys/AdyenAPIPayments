@@ -12,6 +12,6 @@
         public string? PaymentMethod { get; set; }
         public string? CvcResultRaw { get; set; }
         public string? AcquirerCode { get; set; }
-        public string AcquirerReference { get; set; }
+        public string? AcquirerReference { get; set; }
     }
 }

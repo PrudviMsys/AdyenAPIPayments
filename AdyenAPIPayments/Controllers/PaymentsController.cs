@@ -21,7 +21,7 @@ namespace AdyenAPIPayments.Controllers
         [HttpPost]
         public async Task<ActionResult<PaymentResponse>> MakePaymentRequest(PaymentRequest paymentRequest)
         {
-            // Replace "YOUR_API_KEY" with your actual Adyen API key
+            
             _httpClient.DefaultRequestHeaders.Add("x-API-key", "YOUR-X-API-KEY");
             _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
